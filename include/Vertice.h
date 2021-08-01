@@ -6,10 +6,13 @@
 
 class Vertice {
     public:
-        Vertice();
-        void adicionaSaida(Vertice& vertice);
+        Vertice(int id) : id(id) {}
+        void adicionaSaida(Vertice* vertice);
+        void imprimeSaidas();
+
     private:
-        std::vector<Vertice&> saidas;
+        std::vector<Vertice*> saidas;
+        int id;
         int tempoDescobrimento;
         int tempoFinalizacao;
 };

@@ -9,6 +9,8 @@ class Grafo {
     public:
         Grafo(int numeroDeVertices);
         int contaComponentesFortementeConectados();
+        void adicionaAresta(int origem, int destino);
+        void imprimeVerticesEArestas();
 
     private:
         std::vector<Vertice> vertices;

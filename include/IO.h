@@ -5,6 +5,6 @@
 #include <iostream>
 #include "Grafo.h"
 
-Grafo& montarGrafoRotasEntreAeroportos();
+Grafo montarGrafoRotasEntreAeroportos();
 
 #endif
