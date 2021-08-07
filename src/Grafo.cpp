@@ -8,6 +8,10 @@ Grafo::Grafo(int numeroDeVertices) {
     tempo = 0;
 };
 
+int Grafo::calculaNumeroDeRotasFaltantes() {
+    return 1;
+};
+
 void Grafo::adicionaAresta(int origem, int destino) {
     int indexOrigem = origem - 1;
     int indexDestino = destino - 1;

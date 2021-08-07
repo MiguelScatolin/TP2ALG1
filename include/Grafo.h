@@ -8,7 +8,7 @@
 class Grafo {
     public:
         Grafo(int numeroDeVertices);
-        int contaComponentesFortementeConectados();
+        int calculaNumeroDeRotasFaltantes();
         void adicionaAresta(int origem, int destino);
         void imprimeVerticesEArestas();
 
