@@ -35,12 +35,12 @@ void Grafo::adicionaAresta(int indexOrigem, int indexDestino) {
 
 int Grafo::calculaArestasParaConectarFortemente() {
     std::vector<ComponenteFortementeConectado> componentesFortes = this->encontraComponentesFortementeConectados();
-    Grafo relacaoEntreComponentesFortes = Grafo(componentesFortes);
+    Grafo grafoCondensado = Grafo(componentesFortes);
     
-    return relacaoEntreComponentesFortes.calculaArestasParaGrafoDeComponentes();
+    return grafoCondensado.calculaArestasFaltantesParaGrafoCondensado();
 };
 
-int Grafo::calculaArestasParaGrafoDeComponentes() {
+int Grafo::calculaArestasFaltantesParaGrafoCondensado() {
     int numeroDeFontes = 0,
         numeroDeDrenos = 0,
         numeroDeIsolados = 0; 

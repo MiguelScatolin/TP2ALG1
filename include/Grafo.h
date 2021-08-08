@@ -11,7 +11,7 @@ class Grafo {
         Grafo(int numeroDeVertices);
         Grafo(std::vector<ComponenteFortementeConectado> componentesFortementeConectados);
         int calculaArestasParaConectarFortemente();
-        int calculaArestasParaGrafoDeComponentes();
+        int calculaArestasFaltantesParaGrafoCondensado();
         void adicionaAresta(int indexOrigem, int indexDestino);
         void imprimeVerticesEArestas();
         void salvaGrafoTransposto(Grafo* grafoTransposto);
