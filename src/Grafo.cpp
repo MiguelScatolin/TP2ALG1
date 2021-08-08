@@ -36,10 +36,10 @@ std::vector<ComponenteFortementeConectado> Grafo::encontraComponentesFortementeC
 
 void Grafo::exploraVertice(Vertice* vertice, std::vector<Vertice*> componenteConectado) {
     if(!vertice->jaFoiDescoberto()){
-        tempo++;
+        this->tempo++;
         std::vector<Vertice*> saidasVertice = vertice->descobre(tempo);
         for(int i = 0; i < saidasVertice.size(); i++)
-            saidasVertice[i]->descobre(tempo);
+            this->exploraVertice(saidasVertice[i], componenteConectado);
         vertice->finaliza(tempo);
         indicesPorOrdemDeFinalizacao.insert(indicesPorOrdemDeFinalizacao.begin(), vertice->obtemId() - 1);
     }
