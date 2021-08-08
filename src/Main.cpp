@@ -4,11 +4,13 @@
 #include "IO.h"
 #include "Grafo.h"
 
+#define STRING_TESTE (char *)"teste"
+
 bool checkEqual(char string1[], char string2[]) {
     return strcmp(string1, string2) == 0;
 }
 
-int test() {
+void test() {
     try {
         for(int i = 0; i < 8; i++) {
             std::string nomeArquivoDeEntrada = "entradas/ct0" + std::to_string(i) + ".txt";
@@ -37,7 +39,7 @@ int test() {
 
 int main(int argc, char* argv[]) {
     try {
-        if(argc > 1 && checkEqual(argv[1], "teste")) {
+        if(argc > 1 && checkEqual(argv[1], STRING_TESTE)) {
             test();
             return 0;
         }
