@@ -26,7 +26,7 @@ void ComponenteFortementeConectado::imprime() {
     std::cout << "{ ";
     for(int i = 0; i < this->vertices.size(); i++)
         std::cout << vertices[i]->obtemId() << " ";
-    std::cout << " }" << std::endl;
+    std::cout << "}" << std::endl;
 };
 
 int ComponenteFortementeConectado::obtemNumeroDeEntradasESaidas() {

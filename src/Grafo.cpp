@@ -57,7 +57,7 @@ std::vector<std::vector<Vertice*> > Grafo::realizaBuscaEmProfundidade(std::vecto
         int indice = indices[i];
         if(!vertices[indice]->jaFoiDescoberto()) {
             std::vector<Vertice*> componenteConectado = std::vector<Vertice*>();
-            exploraVertice(vertices[i], componenteConectado);
+            exploraVertice(vertices[indice], componenteConectado);
             componentesConectados.push_back(componenteConectado);
         }
     }
