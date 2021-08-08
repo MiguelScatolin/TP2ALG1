@@ -20,7 +20,7 @@ class Grafo {
         std::vector<int> indicesPorOrdemDeFinalizacao;
         std::vector<Vertice*> vertices;
         std::vector<ComponenteFortementeConectado> encontraComponentesFortementeConectados();
-        void exploraVertice(Vertice* vertice, std::vector<Vertice*> componenteConectado);
+        void exploraVertice(Vertice* vertice, std::vector<Vertice*> &componenteConectado);
         std::vector<std::vector<Vertice*> > realizaBuscaEmProfundidade(std::vector<int> indices);
 };
 

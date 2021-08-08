@@ -19,8 +19,8 @@ void Vertice::finaliza(int tempoFinalizacao) {
     this->tempoFinalizacao = tempoFinalizacao;
 };
 
-void Vertice::imprimeSaidas() {
-    std::cout << "Saidas: ";
+void Vertice::imprime() {
+    std::cout << "Saidas V" << this->obtemId() << ": ";
     for(int i = 0; i < saidas.size(); i++) 
         std::cout << "V" << saidas[i]->id << " ";
     std::cout << std::endl;

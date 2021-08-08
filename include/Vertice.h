@@ -10,7 +10,7 @@ class Vertice {
         void adicionaSaida(Vertice* vertice);
         std::vector<Vertice*> descobre(int tempoDescobrimento);
         void finaliza(int tempoFinalizacao);
-        void imprimeSaidas();
+        void imprime();
         bool jaFoiDescoberto();
         int obtemId();
         std::vector<Vertice*> obtemSaidas();
