@@ -16,7 +16,6 @@ Grafo::Grafo(std::vector<ComponenteFortementeConectado> componentesFortementeCon
     for(int i = 0; i < componentesFortementeConectados.size(); i++) {
         std::vector<Vertice*> saidas = componentesFortementeConectados[i].obtemSaidas();
         for(int j = 0; j < saidas.size(); j++) {
-            int idSaida = saidas[j]->obtemId();
             for(int k = 0; k < componentesFortementeConectados.size(); k++) {
                 std::vector<Vertice*> vertices = componentesFortementeConectados[k].obtemVertices();
                 for(int l = 0; l < vertices.size(); l++) {
@@ -89,7 +88,7 @@ void Grafo::imprimeVerticesEArestas() {
 
 std::vector<std::vector<Vertice*> > Grafo::realizaBuscaEmProfundidade(std::vector<int> indices) {
     std::vector<std::vector<Vertice*> > componentesConectados = std::vector<std::vector<Vertice*> >();
-    for(int i = 0; i < vertices.size(); i ++) {
+    for(int i = 0; i < indices.size(); i ++) {
         int indice = indices[i];
         if(!vertices[indice]->jaFoiDescoberto()) {
             std::vector<Vertice*> componenteConectado = std::vector<Vertice*>();
