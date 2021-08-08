@@ -10,14 +10,12 @@ bool verticeEstaNaLista(Vertice* vertice, std::vector<Vertice*> lista) {
 }
 
 ComponenteFortementeConectado::ComponenteFortementeConectado(std::vector<Vertice*> componenteConectados) {
-    this->numeroDeEntradasESaidas = 0;
     this->vertices = componenteConectados;
     for(int i = 0; i < this->vertices.size(); i++) {
         std::vector<Vertice*> saidasVertice = this->vertices[i]->obtemSaidas();
         for(int j = 0; j < saidasVertice.size(); j++) {
-            if(!verticeEstaNaLista(saidasVertice[j], this->vertices)) {
-                numeroDeEntradasESaidas++;
-            }
+            if(!verticeEstaNaLista(saidasVertice[j], this->vertices))
+                this->saidas.push_back(saidasVertice[j]);
         }
     }
 };
@@ -29,6 +27,9 @@ void ComponenteFortementeConectado::imprime() {
     std::cout << "}" << std::endl;
 };
 
-int ComponenteFortementeConectado::obtemNumeroDeEntradasESaidas() {
-    return this->numeroDeEntradasESaidas;
+std::vector<Vertice*> ComponenteFortementeConectado::obtemSaidas() {
+    return this->saidas;
+};
+std::vector<Vertice*> ComponenteFortementeConectado::obtemVertices() {
+    return this->vertices;
 };

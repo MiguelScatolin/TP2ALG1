@@ -16,7 +16,7 @@ void test() {
             std::ifstream entrada(nomeArquivoDeEntrada);
             std::cin.rdbuf(entrada.rdbuf());
             Grafo rotasEntreAeroportos = montarGrafoRotasEntreAeroportos();
-            int resultadoCalculado = rotasEntreAeroportos.calculaNumeroDeRotasFaltantes();
+            int resultadoCalculado = rotasEntreAeroportos.calculaArestasParaConectarFortemente();
 
             int resultadoEsperado;
             std::string nomeArquivoDeSaida = "saidas/ct0" + std::to_string(i) + "-output.txt";

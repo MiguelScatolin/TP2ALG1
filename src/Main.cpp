@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
 
         Grafo rotasEntreAeroportos = montarGrafoRotasEntreAeroportos();
 
-        int numeroDeRotasASeremCriadas = rotasEntreAeroportos.calculaNumeroDeRotasFaltantes();
+        int numeroDeRotasASeremCriadas = rotasEntreAeroportos.calculaArestasParaConectarFortemente();
 
         std::cout << numeroDeRotasASeremCriadas;
 

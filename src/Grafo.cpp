@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Grafo.h"
 #include <numeric>
+#include<algorithm>
 
 Grafo::Grafo(int numeroDeVertices) {
     for(int i = 0; i < numeroDeVertices; i++)
@@ -8,19 +9,54 @@ Grafo::Grafo(int numeroDeVertices) {
     tempo = 0;
 };
 
-void Grafo::adicionaAresta(int origem, int destino) {
-    int indexOrigem = origem - 1;
-    int indexDestino = destino - 1;
-    vertices[indexOrigem]->adicionaSaida(vertices[indexDestino]);
+Grafo::Grafo(std::vector<ComponenteFortementeConectado> componentesFortementeConectados) {
+    for(int i = 0; i < componentesFortementeConectados.size(); i++)
+        vertices.push_back(new Vertice(i));
+    
+    for(int i = 0; i < componentesFortementeConectados.size(); i++) {
+        std::vector<Vertice*> saidas = componentesFortementeConectados[i].obtemSaidas();
+        for(int j = 0; j < saidas.size(); j++) {
+            int idSaida = saidas[j]->obtemId();
+            for(int k = 0; k < componentesFortementeConectados.size(); k++) {
+                std::vector<Vertice*> vertices = componentesFortementeConectados[k].obtemVertices();
+                for(int l = 0; l < vertices.size(); l++) {
+                    if(saidas[j] == vertices[l])
+                        this->adicionaAresta(i, k);
+                }
+            }
+        }
+    }
 };
 
-int Grafo::calculaNumeroDeRotasFaltantes() {
+void Grafo::adicionaAresta(int indexOrigem, int indexDestino) {
+    vertices[indexOrigem]->adicionaSaida(vertices[indexDestino]);
+    vertices[indexDestino]->adicionaEntrada(vertices[indexOrigem]);
+};
+
+int Grafo::calculaArestasParaConectarFortemente() {
     std::vector<ComponenteFortementeConectado> componentesFortes = this->encontraComponentesFortementeConectados();
-    int numeroDeComponentes = componentesFortes.size();
-    int numeroDeArestasConectandoComponentes = 0;
-    for(int i = 0; i < numeroDeComponentes; i++) 
-        numeroDeArestasConectandoComponentes += componentesFortes[i].obtemNumeroDeEntradasESaidas();
-    return numeroDeComponentes - numeroDeArestasConectandoComponentes;
+    Grafo relacaoEntreComponentesFortes = Grafo(componentesFortes);
+    
+    return relacaoEntreComponentesFortes.calculaArestasParaGrafoDeComponentes();
+};
+
+int Grafo::calculaArestasParaGrafoDeComponentes() {
+    int numeroDeFontes = 0,
+        numeroDeDrenos = 0,
+        numeroDeIsolados = 0; 
+    for(int i = 0; i < this->vertices.size(); i++) {
+        Vertice* vertice = vertices[i];
+        int numeroDeEntradas = vertice->obtemEntradas().size();
+        int numeroDeSaidas = vertice->obtemEntradas().size();
+
+        if(numeroDeEntradas > 0 && numeroDeSaidas == 0)
+            numeroDeDrenos++;
+        else if(numeroDeEntradas == 0 && numeroDeSaidas > 0)
+            numeroDeFontes++;
+        else if(numeroDeEntradas == 0 && numeroDeSaidas == 0)
+            numeroDeIsolados++;
+    }
+    return std::max(numeroDeFontes + numeroDeIsolados, numeroDeDrenos + numeroDeIsolados);
 };
 
 std::vector<ComponenteFortementeConectado> Grafo::encontraComponentesFortementeConectados() {

@@ -10,8 +10,8 @@ Grafo montarGrafoRotasEntreAeroportos() {
     int verticeOrigem, verticeDestino;
     for(int i = 0; i < numeroDeArestas; i++) {
         std::cin >> verticeOrigem >> verticeDestino;
-        rotasEntreAeroportos.adicionaAresta(verticeOrigem, verticeDestino);
-        rotasEntreAeroportosInvertidas->adicionaAresta(verticeDestino, verticeOrigem);
+        rotasEntreAeroportos.adicionaAresta(verticeOrigem - 1, verticeDestino - 1);
+        rotasEntreAeroportosInvertidas->adicionaAresta(verticeDestino - 1, verticeOrigem - 1);
     }
     rotasEntreAeroportos.salvaGrafoTransposto(rotasEntreAeroportosInvertidas);
 

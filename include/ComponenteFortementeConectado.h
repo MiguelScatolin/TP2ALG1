@@ -9,11 +9,12 @@ class ComponenteFortementeConectado {
     public:
         ComponenteFortementeConectado(std::vector<Vertice*> componenteConectados);
         void imprime();
-        int obtemNumeroDeEntradasESaidas();
+        std::vector<Vertice*> obtemSaidas();
+        std::vector<Vertice*> obtemVertices();
 
     private:
-        int numeroDeEntradasESaidas;
         std::vector<Vertice*> vertices;
+        std::vector<Vertice*> saidas;
 };
 
 #endif

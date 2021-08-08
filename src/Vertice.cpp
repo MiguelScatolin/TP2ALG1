@@ -10,6 +10,10 @@ void Vertice::adicionaSaida(Vertice* vertice) {
     saidas.push_back(vertice);
 };
 
+void Vertice::adicionaEntrada(Vertice* vertice) {
+    entradas.push_back(vertice);
+};
+
 std::vector<Vertice*> Vertice::descobre(int tempoDescobrimento) {
     this->tempoDescobrimento = tempoDescobrimento;
     return obtemSaidas();
@@ -36,4 +40,8 @@ int Vertice::obtemId() {
 
 std::vector<Vertice*> Vertice::obtemSaidas() {
     return this->saidas;
+};
+
+std::vector<Vertice*> Vertice::obtemEntradas() {
+    return this->entradas;
 };

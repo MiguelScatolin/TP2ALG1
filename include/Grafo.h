@@ -9,8 +9,10 @@
 class Grafo {
     public:
         Grafo(int numeroDeVertices);
-        int calculaNumeroDeRotasFaltantes();
-        void adicionaAresta(int origem, int destino);
+        Grafo(std::vector<ComponenteFortementeConectado> componentesFortementeConectados);
+        int calculaArestasParaConectarFortemente();
+        int calculaArestasParaGrafoDeComponentes();
+        void adicionaAresta(int indexOrigem, int indexDestino);
         void imprimeVerticesEArestas();
         void salvaGrafoTransposto(Grafo* grafoTransposto);
 
