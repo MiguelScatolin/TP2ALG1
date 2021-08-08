@@ -19,7 +19,7 @@ int Grafo::calculaNumeroDeRotasFaltantes() {
     int numeroDeComponentes = componentesFortes.size();
     int numeroDeArestasConectandoComponentes = 0;
     for(int i = 0; i < numeroDeComponentes; i++) 
-        numeroDeArestasConectandoComponentes += componentesFortes[i].numeroDeEntradasESaidas;
+        numeroDeArestasConectandoComponentes += componentesFortes[i].obtemNumeroDeEntradasESaidas();
     return numeroDeComponentes - numeroDeArestasConectandoComponentes;
 };
 
