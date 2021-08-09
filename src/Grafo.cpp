@@ -72,7 +72,7 @@ std::vector<ComponenteFortementeConectado> Grafo::encontraComponentesFortementeC
 void Grafo::exploraVertice(Vertice* vertice, std::vector<Vertice*>& componenteConectado) {
     if(!vertice->jaFoiDescoberto()){
         this->tempo++;
-        std::vector<Vertice*> saidasVertice = vertice->descobre(tempo);
+        std::vector<Vertice*> saidasVertice = vertice->descobre(this->tempo);
         componenteConectado.push_back(vertice);
         for(int i = 0; i < saidasVertice.size(); i++)
             this->exploraVertice(saidasVertice[i], componenteConectado);

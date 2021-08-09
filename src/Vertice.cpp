@@ -1,9 +1,12 @@
 #include <iostream>
 #include "Vertice.h"
 
-Vertice::Vertice(Vertice* vertice) {
-    this->id = vertice->id;
-    this->saidas = vertice->saidas;
+Vertice::Vertice(int id) {
+    this->id = id;
+    this->saidas = std::vector<Vertice*>();
+    this->entradas = std::vector<Vertice*>();
+    this->tempoDescobrimento = 0;
+    this->tempoFinalizacao = 0;
 };
 
 void Vertice::adicionaSaida(Vertice* vertice) {
@@ -24,7 +27,9 @@ void Vertice::finaliza(int tempoFinalizacao) {
 };
 
 void Vertice::imprime() {
-    std::cout << "Saidas V" << this->obtemId() << ": ";
+    std::cout << "V" << this->obtemId() << std::endl;
+    std::cout << "Tempo descoberta: " << this->tempoDescobrimento << std::endl;
+    std::cout << "Saidas: ";
     for(int i = 0; i < saidas.size(); i++) 
         std::cout << "V" << saidas[i]->id << " ";
     std::cout << std::endl;

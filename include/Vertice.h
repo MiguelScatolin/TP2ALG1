@@ -5,8 +5,7 @@
 
 class Vertice {
     public:
-        Vertice(int id) : id(id) {}
-        Vertice(Vertice* vertice);
+        Vertice(int id);
         void adicionaSaida(Vertice* vertice);
         void adicionaEntrada(Vertice* vertice);
         std::vector<Vertice*> descobre(int tempoDescobrimento);
