@@ -4,9 +4,11 @@
 #include<algorithm>
 
 Grafo::Grafo(int numeroDeVertices) {
+    this->vertices = std::vector<Vertice*>();
+    this->indicesPorOrdemDeFinalizacao = std::vector<int>();
     for(int i = 0; i < numeroDeVertices; i++)
         vertices.push_back(new Vertice(i + 1));
-    tempo = 0;
+    this->tempo = 0;
 };
 
 Grafo::Grafo(std::vector<ComponenteFortementeConectado> componentesFortementeConectados) {
@@ -46,7 +48,7 @@ int Grafo::calculaArestasFaltantesParaGrafoCondensado() {
     for(int i = 0; i < this->vertices.size(); i++) {
         Vertice* vertice = vertices[i];
         int numeroDeEntradas = vertice->obtemEntradas().size();
-        int numeroDeSaidas = vertice->obtemEntradas().size();
+        int numeroDeSaidas = vertice->obtemSaidas().size();
 
         if(numeroDeEntradas > 0 && numeroDeSaidas == 0)
             numeroDeDrenos++;
@@ -66,6 +68,7 @@ std::vector<ComponenteFortementeConectado> Grafo::encontraComponentesFortementeC
     std::vector<ComponenteFortementeConectado> componentesFortementeConectados = std::vector<ComponenteFortementeConectado>();
     for(int i = 0; i < componentesConectados.size(); i++)
         componentesFortementeConectados.push_back(ComponenteFortementeConectado(componentesConectados[i]));
+    
     return componentesFortementeConectados;
 };
 
